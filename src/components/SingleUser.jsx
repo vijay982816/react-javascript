@@ -1,6 +1,20 @@
 import React from 'react'
+import { useState } from 'react'
+import UpdateUser from './UpdateUser.jsx'
 
-const SingleUser = ({ imgUrl, name, phone, age }) => {
+const SingleUser = ({ imgUrl, name, phone, age, id }) => {
+
+
+
+    const [update, setUpdate] = useState("close")
+
+
+    const handleUpdateUser = () => {
+
+
+        setUpdate(!update)
+
+    }
     return (
         <>
 
@@ -30,12 +44,12 @@ const SingleUser = ({ imgUrl, name, phone, age }) => {
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center md:text-left">
 
-                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full mx-2">
+                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full mx-2" onClick={handleUpdateUser}>
 
                         Update
                     </button>
 
-                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1">
+                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1" onClick={() => alert(id)}>
 
                         Delete
                     </button>
@@ -44,6 +58,17 @@ const SingleUser = ({ imgUrl, name, phone, age }) => {
             </tr>
 
 
+
+            {/* {
+                update == "open" && <UpdateUser updatingUser={{ imgUrl, name, phone, age, id }} />
+
+
+            }
+
+
+            {
+                console.log(update)
+            } */}
         </>
 
     )

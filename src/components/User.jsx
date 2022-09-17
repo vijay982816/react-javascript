@@ -1,9 +1,13 @@
 
 import { useEffect } from "react"
 import { useContext } from "react"
+import { Link } from "react-router-dom"
 import UserContext from "../context/UserContext.jsx"
-import Modal from "./Modal.jsx"
+import AddUser from "./AddUser.jsx"
+
 import SingleUser from "./SingleUser.jsx"
+import Toast from "./Toast.jsx"
+import UpdateUser from "./UpdateUser.jsx"
 
 const User = () => {
 
@@ -24,7 +28,8 @@ const User = () => {
 
 
 
-            {/* <div className="antialiased font-sans bg-gray-200">
+
+            <div className="antialiased font-sans bg-gray-200">
                 <div className="container mx-auto px-4 sm:px-8">
                     <div className="py-8 lg:px-60">
                         <div>
@@ -60,7 +65,7 @@ const User = () => {
                                         {users.map((element) => {
 
 
-                                            return <SingleUser key={element._id} imgUrl={element.imgUrl} name={element.name} phone={element.phone} age={element.age} />
+                                            return <SingleUser key={element._id} id={element._id} imgUrl={element.imgUrl} name={element.name} phone={element.phone} age={element.age} />
                                         }
 
 
@@ -75,13 +80,27 @@ const User = () => {
 
 
                                 <div
-                                    class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
+                                    className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
 
-                                    <div class="inline-flex mt-2 xs:mt-0">
+                                    <div className="inline-flex mt-2 xs:mt-0">
                                         <button
-                                            class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
-                                            Add User
+                                            className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+
+
+
+                                            <Link to="/adduser">Add User</Link>
                                         </button>
+
+
+
+                                        <button
+                                            className="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-l">
+
+
+
+                                            <Link to="/updateuser/:id">update User</Link>
+                                        </button>
+
 
                                     </div>
                                 </div>
@@ -89,12 +108,17 @@ const User = () => {
                         </div>
                     </div>
                 </div>
-            </div> */}
+            </div>
 
 
 
-            <Modal />
+            {/* <AddUser/> */}
 
+
+            {/* <Toast /> */}
+
+
+            {/* <UpdateUser/> */}
 
 
 
