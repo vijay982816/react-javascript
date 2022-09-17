@@ -31,20 +31,22 @@ const AllUser = (props) => {
 
 
     // Add a Note
-    const addNote = async (name, age, phone) => {
+    const addUser = async (name, age, phone) => {
         // TODO: API Call
         // API Call 
-        const response = await fetch(`${host}/api/notes/addnote`, {
+        const response = await fetch(`https://3001-vijay982816-blanknode-mtewnqs608r.ws-us65.gitpod.io/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjEzMWRjNWUzZTQwMzdjZDQ3MzRhMDY2In0sImlhdCI6MTYzMDY2OTU5Nn0.hJS0hx6I7ROugkqjL2CjrJuefA3pJi-IU5yGUbRHI4Q"
+
             },
-            body: JSON.stringify({ title, description, tag })
+            body: JSON.stringify({ name, age, phone })
         });
 
-        const note = await response.json();
-        setNotes(notes.concat(note))
+        const newUser = await response.json();
+        setUsers(users.concat(newUser))
+
+        console.log('add user ended')
     }
 
 
@@ -54,7 +56,7 @@ const AllUser = (props) => {
     return (
 
 
-        <UserContext.Provider value={{ getUsers, users }}>
+        <UserContext.Provider value={{ users, getUsers, addUser }}>
 
 
 
