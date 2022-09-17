@@ -28,7 +28,18 @@ const AllUser = (props) => {
     }
 
 
+    //one user find 
 
+
+    const oneUser = async (id) => {
+
+        // API Call 
+
+        const response = await fetch(`https://blank-node.vercel.app/oneuser/${id}`);
+const myjson = await response.json()
+
+        return myjson
+    }
 
     // Add a Note
     const addUser = async (name, age, phone) => {
@@ -66,18 +77,18 @@ const AllUser = (props) => {
         });
         const json = await response.json();
 
-        let newUser = JSON.parse(JSON.stringify(users))
-        // Logic to edit in client
-        for (let index = 0; index < newNotes.newUser; index++) {
-            const element = newUser[index];
-            if (element._id === id) {
-                newUser[index].name = name;
-                newUser[index].age = age;
-                newUser[index].phone = phone;
-                break;
-            }
-        }
-        setUsers(newUser);
+        // let newUser = JSON.parse(JSON.stringify(users))
+        // // Logic to edit in client
+        // for (let index = 0; index < newNotes.newUser; index++) {
+        //     const element = newUser[index];
+        //     if (element._id === id) {
+        //         newUser[index].name = name;
+        //         newUser[index].age = age;
+        //         newUser[index].phone = phone;
+        //         break;
+        //     }
+        // }
+        // setUsers(newUser);
     }
 
 
@@ -87,7 +98,7 @@ const AllUser = (props) => {
     return (
 
 
-        <UserContext.Provider value={{ users, getUsers, addUser }}>
+        <UserContext.Provider value={{ users, oneUser, getUsers, addUser, updateUser }}>
 
 
 
