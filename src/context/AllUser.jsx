@@ -36,7 +36,7 @@ const AllUser = (props) => {
         // API Call 
 
         const response = await fetch(`https://blank-node.vercel.app/oneuser/${id}`);
-const myjson = await response.json()
+        const myjson = await response.json()
 
         return myjson
     }
@@ -93,12 +93,27 @@ const myjson = await response.json()
 
 
 
+    //Deleting user
+
+
+    const deleteUser = async (id) => {
+        // API Call
+        const response = await fetch(`https://blank-node.vercel.app/${id}`, {
+            method: 'DELETE'
+        });
+        const json = response.json();
+        const newUsers = users.filter((user) => { return user._id !== id })
+        setUsers(newUsers)
+
+        console.log('delete end', id)
+    }
+
 
 
     return (
 
 
-        <UserContext.Provider value={{ users, oneUser, getUsers, addUser, updateUser }}>
+        <UserContext.Provider value={{ users, oneUser, getUsers, addUser, updateUser, deleteUser }}>
 
 
 

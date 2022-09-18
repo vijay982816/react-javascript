@@ -1,18 +1,28 @@
 import React from 'react'
-import { useState } from 'react'
-import UpdateUser from './UpdateUser.jsx'
+import { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
+import UserContext from '../context/UserContext.jsx'
+
 
 const SingleUser = ({ imgUrl, name, phone, age, id }) => {
 
 
 
-    const [update, setUpdate] = useState("close")
 
 
-    const handleUpdateUser = () => {
+    const navigate = useNavigate()
 
 
-        setUpdate(!update)
+    const { deleteUser } = useContext(UserContext)
+
+
+
+
+    
+
+
+    const handleDelete = () => {
+        deleteUser(id)
 
     }
     return (
@@ -44,14 +54,24 @@ const SingleUser = ({ imgUrl, name, phone, age, id }) => {
                 </td>
                 <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm text-center md:text-left">
 
-                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full mx-2" onClick={handleUpdateUser}>
+                    <button className="my-1 px-3 py-1 font-semibold text-green-900 leading-tight bg-green-100 rounded-full mx-2" onClick={() => navigate(`updateuser/${id}`)}>
 
                         Update
                     </button>
 
-                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1" onClick={() => alert(id)}>
+                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1"
+                        onClick={handleDelete}>
 
                         Delete
+                    </button>
+
+                    <button className=" my-1 font-semibold text-red-900 leading-tight rounded-full bg-red-100 px-3 py-1"
+
+                        onClick={() => navigate(`profile/${id}`)}
+
+                    >
+
+                        Profile
                     </button>
 
                 </td>
